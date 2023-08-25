@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check } from 'k6';
+import { check, sleep } from 'k6';
 import { Smoke } from "./options.js";
 
 export let options = Smoke;
@@ -44,4 +44,6 @@ export default function (data) {
     check(usersRes, {
         'users status was 200': (r) => r.status === 200,
     });
+
+    sleep(2);
 }
